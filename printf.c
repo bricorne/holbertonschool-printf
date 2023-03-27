@@ -17,16 +17,15 @@ int _printf(const char *format, ...)
 			if (format[i+1] == 'r')
 			{
 				_putchar(format[i]);
-				_putchar(format[i+1]);
 
 			}
-			if (format[i+1] == 'c')
+			else if (format[i+1] == 'c')
 			{
 				 c  = va_arg(args,int);
 				print_char(c);
 				i++;
 			}
-			if (format[i+1] == 's')
+			else if (format[i+1] == 's')
 			{
 				str = va_arg(args,const char*);
 				print_string(str);
