@@ -5,6 +5,8 @@
 char *_strcpy(char *dest, char *src);
 char *_strdup(char *str);
 int _putchar(char c);
+int _strlen(char *s);
+void print_string(const char *str);
 /**
  * *_strcpy - check holberton
  * @dest: have strings
@@ -21,6 +23,16 @@ char *_strcpy(char *dest, char *src)
 	}
 	dest[i] = '\0';
 	return (dest);
+}
+int _strlen(char *s)
+{
+	int i = 0;
+
+	while(s[i])
+	{
+		i++;
+	}
+	return (i);
 }
 /**
  * _strdup - functiion
@@ -52,4 +64,19 @@ char *_strdup(char *str)
 int _putchar(char c)
 {
         return (write(1, &c, 1));
+}
+void print_string(const char *str)
+{
+        int i;
+
+        for (i = 0;str[i]; i++)
+        {
+                _putchar(str[i]);
+        }
+
+
+}
+void print_char(char c)
+{
+	_putchar(c);
 }
