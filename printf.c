@@ -17,7 +17,7 @@ int _printf(const char *format, ...)
 		{
 			if (format[i+1] == 'r')
 			{
-				_putchar(format[i];
+				_putchar(format[i]);
 			}
 			else if (format[i+1] == 'c')
 			{
