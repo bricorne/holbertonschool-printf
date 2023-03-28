@@ -5,8 +5,8 @@
 char *_strcpy(char *dest, char *src);
 char *_strdup(char *str);
 int _putchar(char c);
-int _strlen(char *s);
-void print_string(const char *str);
+int _strlen(const char *s);
+int print_string(const char *str);
 /**
  * *_strcpy - check holberton
  * @dest: have strings
@@ -24,7 +24,7 @@ char *_strcpy(char *dest, char *src)
 	dest[i] = '\0';
 	return (dest);
 }
-int _strlen(char *s)
+int _strlen(const char *s)
 {
 	int i = 0;
 
@@ -65,7 +65,7 @@ int _putchar(char c)
 {
         return (write(1, &c, 1));
 }
-void print_string(const char *str)
+int print_string(const char *str)
 {
         int i;
 
@@ -74,9 +74,11 @@ void print_string(const char *str)
                 _putchar(str[i]);
         }
 
-
+return (i);
 }
-void print_char(char c)
+int print_char(char c)
 {
 	_putchar(c);
+
+	return(1);
 }

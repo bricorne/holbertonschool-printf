@@ -7,6 +7,7 @@ int _printf(const char *format, ...)
 	int i;
 	char c;
 	const char* str;
+	int len = 0;
 
 	va_start(args, format);
 
@@ -23,12 +24,14 @@ int _printf(const char *format, ...)
 			{
 				 c  = va_arg(args,int);
 				print_char(c);
+				len--;
 				i++;
 			}
 			else if (format[i+1] == 's')
 			{
 				str = va_arg(args,const char*);
 				print_string(str);
+				len  =  (len + _strlen(str)) - 2;
 				i++;
 			}
 			else
@@ -42,6 +45,7 @@ int _printf(const char *format, ...)
 		}
 	}
 	va_end(args);
-	return (0);
+	len = len + i;
+	return (len - 1);
 }
 
