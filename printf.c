@@ -15,11 +15,15 @@ int _printf(const char *format, ...)
 	{
 		if (format[i] == '%')
 		{
-			if (format[i+1] == 'c')
+			if (format[i+1] == 'r')
+			{
+				_putchar(format[i];
+			}
+			else if (format[i+1] == 'c')
 			{
 				 c  = va_arg(args,int);
 				print_char(c);
-				len --;
+				len--;
 				i++;
 			}
 			else if (format[i+1] == 's')

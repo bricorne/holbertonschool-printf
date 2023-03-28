@@ -8,3 +8,4 @@ int print_char(char c);
 char *_strcpy(char *dest, char *src);
 int _strlen(const char *s);
 #endif
+
