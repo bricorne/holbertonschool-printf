@@ -67,7 +67,12 @@ int _putchar(char c)
 }
 int print_string(const char *str)
 {
-        int i;
+	int i;
+
+       if (str == NULL)
+       {
+		return (0);
+       }
 
         for (i = 0;str[i]; i++)
         {
