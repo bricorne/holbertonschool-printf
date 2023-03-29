@@ -1,5 +1,11 @@
 #ifndef HEADER
 #define HEADER
+typedef struct operation
+{
+	char op;
+	void (*fn)(va_list);
+} operation_t;
+
 int print_string(const char *str);
 int _printf(const char *format, ...);
 char *_strdup(char *str);
