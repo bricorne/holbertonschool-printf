@@ -10,6 +10,7 @@ int _printf(const char *const format, ...)
 	operateurs ops[] = {
 		{'s', print_string},
 		{'c', print_char},
+		{'%', print_percent},
 		{0, NULL}
 	};
 	va_start(args, format);
@@ -17,25 +18,20 @@ int _printf(const char *const format, ...)
 	{
 		if (format[i] == '%')
 		{
-			i++;
 			b = 0;
 			while (ops[b].op != '\0')
 			{
-				if (ops[b].op == format[i])
+				if (ops[b].op == format[i + 1])
 				{
 					len += ops[b].func(args);
+					i++;
 					break;
 				}
-
 				b++;
 			}
-			if ( !(isalpha(format[i])) && format[i] != '%')	
+			if (format[i + 1] == '\0' || format[i + 1] == ' ')
 				return (-1);
-			else if (ops[b].op == 0)
-			{
-				len += _putchar(format[i]);
-			}
-				}
+		}
 		else
 		{
 			len += _putchar(format[i]);
