@@ -1,6 +1,7 @@
 #include "main.h"
 #include <stdarg.h>
 #include <stdio.h>
+#include <ctype.h>
 
 int _printf(const char *const format, ...)
 {
@@ -28,11 +29,13 @@ int _printf(const char *const format, ...)
 
 				b++;
 			}
-			if (ops[b].op == 0)
+			if ( !(isalpha(format[i])) && format[i] != '%')	
+				return (-1);
+			else if (ops[b].op == 0)
 			{
 				len += _putchar(format[i]);
 			}
-		}
+				}
 		else
 		{
 			len += _putchar(format[i]);
