@@ -1,43 +1,84 @@
 #include "main.h"
 #include <stdarg.h>
 #include <stdio.h>
-int _printf(const char *format, ...)
+
+int _printf(const char *const format, ...)
+{
+    int i = 0;
+    int b = 0;
+    int len = 0;
+    int j = 0;
+    va_list args;
+
+    operateurs ops[] = {
+        {'s', print_string},
+        {'c', print_char},
+        {0, NULL}
+    };
+
+    va_start(args, format);
+    while (format[i] != '\0')
+    {
+	    if (format[i] == '%')
+	    {
+		i++;
+        	b = 0;
+        while (ops[b].op != '\0')
+        {
+            if (ops[b].op == format[i])
+            {
+              len += ops[b].func(args);
+	      j++;
+	    }
+            b++;
+	    if (b == 2 && j == 0)
+	    {
+		    if (format[i] != '%')
+		    {
+		    _putchar(format[i-1]);
+		    }
+		    _putchar(format[i]);
+	    }
+	}
+	    }
+	    else
+	    {
+	_putchar(format[i]);
+	    }
+	i++;
+    }
+    va_end(args);
+    len += i;
+    printf("%d\n", len);
+    return (len);
+}
+
+
+
+
+
+
+/*int _printf(const char *format, ...)
 {
 	va_list args;
-	int i;
-	char c;
-	const char* str;
-	int len = 0;
-
 	va_start(args, format);
+	int i;
 
-	for (i = 0; format[i]; i++)
+	for (i = 0; i != '\0'; i++)
 	{
-		if (format[i] == '%')
+		if (format[i] == "%")
 		{
-			if (format[i+1] == 'r')
+			if (format[i+1] == "c")
 			{
-				_putchar(format[i]);
-			}
-			else if (format[i+1] == 'c')
-			{
-				 c  = va_arg(args,int);
-				print_char(c);
-				len--;
+				print_char(args);
 				i++;
+				args++;
 			}
-			else if (format[i+1] == 's')
+			else if (format[i+1] == "s")
 			{
-				str = va_arg(args,const char*);
-				print_string(str);
-				len  =  (len + _strlen(str)) - 2;
+				print_string(args);
 				i++;
-			}
-			else if (format[i+1] == '%')
-			{
-				_putchar(format[i]);
-				i++;
-				len--;
+				args++;
 			}
 			else
 			{
@@ -50,8 +91,5 @@ int _printf(const char *format, ...)
 		}
 	}
 	va_end(args);
-	len = len + i;
-	/*printf("%d\n", len);*/
-	return (len);
-}
+}*/
 

@@ -2,28 +2,13 @@
 #include "main.h"
 #include <stdlib.h>
 #include <unistd.h>
-char *_strcpy(char *dest, char *src);
-char *_strdup(char *str);
-int _putchar(char c);
-int _strlen(const char *s);
-int print_string(const char *str);
-/**
- * *_strcpy - check holberton
- * @dest: have strings
- * @src:have strings
- * Return:void
- */
-char *_strcpy(char *dest, char *src)
-{
-	int i;
+#include <stdarg.h>
 
-	for (i = 0; src[i] != '\0'; ++i)
-	{
-	dest[i] = src[i];
-	}
-	dest[i] = '\0';
-	return (dest);
-}
+/*
+ * _strlen - a fonction that calcul the length of a string
+ * @s: a string to print
+ * return the length of a string
+ */
 int _strlen(const char *s)
 {
 	int i = 0;
@@ -34,57 +19,52 @@ int _strlen(const char *s)
 	}
 	return (i);
 }
-/**
- * _strdup - functiion
- * @str: input
- * Return: array
+
+/*
+ * _putchar - fonction that write a char
+ * @c: a char to print
+ * return: the char
  */
-char *_strdup(char *str)
-{
-	unsigned int i;
-	char *array;
 
-	if (str == 0)
-	{
-		return (0);
-	}
-	for (i = 0; str[i]; i++)
-		;
-
-	array = malloc((i + 1) * sizeof(char));
-	if (array == NULL)
-	{
-		return (NULL);
-	}
-	for (i = 0; str[i] ; i++)
-	array[i] = str[i];
-	array[i] = '\0';
-	return (array);
-}
 int _putchar(char c)
 {
         return (write(1, &c, 1));
 }
-int print_string(const char *str)
+
+/*
+ * print_string - fonction that print a string
+ * @args - argument to print
+ *
+ */
+
+int print_string(va_list args)
 {
 	int i;
-
-       if (str == NULL)
-       {
-		return (0);
-       }
-
-        for (i = 0;str[i]; i++)
-        {
-                _putchar(str[i]);
-        }
-
+	char *str = va_arg(args, char *);
+	for (i = 0; str[i]; i++)
+	{
+		_putchar(str[i]);
+	}
 return (i);
 }
-int print_char(char c)
+
+/*
+ * print_char - fonction that print a char
+ * @c: a char to print
+ * return: the length (1)
+ */
+
+int print_char(va_list args)
 {
+	char c = va_arg(args, int);
 	_putchar(c);
 
 	return(1);
 }
+
+/*
+ *
+ *
+ *
+ */
 
