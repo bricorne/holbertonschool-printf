@@ -3,40 +3,45 @@
 #include <stdio.h>
 #include <ctype.h>
 
-int _printf(const char *const format, ...)
+int	_printf(const char *const format, ...)
 {
-	int i = 0, b = 0, len = 0;
-	va_list args;
+	int	len;
+	int	x;
+	int	y;
+	va_list	args;
 	operateurs ops[] = {
 		{'s', print_string},
 		{'c', print_char},
 		{'%', print_percent},
 		{0, NULL}
 	};
+	len = 0;
+	setbuf(stdout, NULL);
 	va_start(args, format);
-	while (format != NULL && format[i] != '\0')
+	for (x = 0; format && format[x]; x++)
 	{
-		if (format[i] == '%')
+		if (format[x] == '%')
 		{
-			b = 0;
-			while (ops[b].op != '\0')
+			for (y = 0; ops[y].op; y++)
 			{
-				if (ops[b].op == format[i + 1])
+				if (ops[y].op == format[x + 1])
 				{
-					len += ops[b].func(args);
-					i++;
+					len += ops[y].func(args);
+					x++;
 					break;
 				}
-				b++;
 			}
-			if (format[i + 1] == '\0' || format[i + 1] == ' ')
+			if (!ops[y].op)
+			{
+				len += print_percent(args);
+			}
+			if (format[x + 1] == '\0' || format[x + 1] == ' ')
 				return (-1);
 		}
 		else
 		{
-			len += _putchar(format[i]);
+			len += _putchar(format[x]);
 		}
-		i++;
 	}
 	va_end(args);
 	return (len);

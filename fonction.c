@@ -9,24 +9,24 @@
  * @args: va_arg, supposed to be a chart
  * return: bytes of writen characters
  */
-int print_percent(__attribute__((unused)) va_list args)
+int	print_percent(va_list args)
 {
+	(void) args;
 	return (_putchar('%'));
 }
+
 /*
  * _strlen - a fonction that calcul the length of a string
  * @s: a string to print
  * return the length of a string
  */
-int _strlen(const char *s)
+int	_strlen(const char *s)
 {
-	int i = 0;
+	int	x;
 
-	while(s[i])
-	{
-		i++;
-	}
-	return (i);
+	for (x = 0; s[x]; x++)
+		;
+	return (x);
 }
 
 /*
@@ -35,7 +35,7 @@ int _strlen(const char *s)
  * return: the char
  */
 
-int _putchar(char c)
+int	_putchar(char c)
 {
 	return (write(1, &c, 1));
 }
@@ -46,19 +46,19 @@ int _putchar(char c)
  *
  */
 
-int print_string(va_list args)
+int	print_string(va_list args)
 {
-	int i;
-	char *str = va_arg(args, char *);
-	if (str == NULL)
-	{
-		str ="(null)";
-	}
-	for (i = 0; str[i]; i++)
-	{
-		_putchar(str[i]);
-	}
-	return (i);
+	int	r;
+	int	x;
+	char	*s;
+
+	r = 0;
+	s = va_arg(args, char *);
+	if (s == NULL)
+		s ="(null)";
+	for (x = 0; s[x]; x++)
+		r += _putchar(s[x]);
+	return (r);
 }
 
 /*
@@ -67,12 +67,14 @@ int print_string(va_list args)
  * return: the length (1)
  */
 
-int print_char(va_list args)
+int	print_char(va_list args)
 {
-	char c = va_arg(args, int);
-	_putchar(c);
+	int	r;
+	char	v;
 
-	return(1);
+	v = va_arg(args, int);
+	r = _putchar(v);
+	return(r);
 }
 
 /*
