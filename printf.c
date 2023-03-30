@@ -28,6 +28,7 @@ int _printf(const char *const format, ...)
             if (ops[b].op == format[i])
             {
               len += ops[b].func(args);
+	      len -= 2;
 	      j++;
 	    }
             b++;
@@ -36,6 +37,10 @@ int _printf(const char *const format, ...)
 		    if (format[i] != '%')
 		    {
 		    _putchar(format[i-1]);
+		    }
+		    else
+		    {
+			    len--;
 		    }
 		    _putchar(format[i]);
 	    }
