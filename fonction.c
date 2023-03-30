@@ -73,8 +73,8 @@ int	print_char(va_list args)
 	char	v;
 
 	v = va_arg(args, int);
-	r = _putchar(v);
-	return(r);
+	r = _putchar((char) v);
+	return (r);
 }
 
 /*
