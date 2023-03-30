@@ -49,7 +49,7 @@ int _printf(const char *const format, ...)
     }
     va_end(args);
     len += i;
-    printf("%d\n", len);
+    /*printf("%d\n", len);*/
     return (len);
 }
 
