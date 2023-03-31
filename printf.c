@@ -3,6 +3,13 @@
 #include <stdio.h>
 #include <ctype.h>
 
+/**
+  * _printf - fonction that print anythings
+  * @format: the format of the thing to print
+  * ... - all the arguments to print
+  * Return: the len of what the fonction print
+  */
+
 int _printf(const char *const format, ...)
 {
 	int len, x, y;
