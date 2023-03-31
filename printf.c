@@ -28,10 +28,6 @@ int _printf(const char *const format, ...)
 					x++;
 					break;
 				}
-				// else if (!format[x + 1] )
-				// {
-				// 	return -1;
-				// }
 			}
 			if (format[x] == '%' && format[x + 1] == '\0')
 				return (-1);
