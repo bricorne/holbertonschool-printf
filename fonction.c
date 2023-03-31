@@ -4,12 +4,13 @@
 #include <unistd.h>
 #include <stdarg.h>
 #include <limits.h>
+#include <math.h>
 
 /**
-  * print_percent - a function that help to print a percent
-  * @args: va_arg, supposed to be a chart
-  * Return: bytes of writen characters
-  */
+ * print_percent - a function that help to print a percent
+ * @args: va_arg, supposed to be a chart
+ * Return: bytes of writen characters
+ */
 
 int	print_percent(va_list args)
 {
@@ -18,10 +19,10 @@ int	print_percent(va_list args)
 }
 
 /**
-  * print_string - fonction that print a string
-  * @args: argument to print
-  * Return: the len of the string
-  */
+ * print_string - fonction that print a string
+ * @args: argument to print
+ * Return: the len of the string
+ */
 
 int	print_string(va_list args)
 {
@@ -39,10 +40,10 @@ int	print_string(va_list args)
 }
 
 /**
-  * print_char - fonction that print a char
-  * @args: a char to print
-  * Return: the length (1)
-  */
+ * print_char - fonction that print a char
+ * @args: a char to print
+ * Return: the length (1)
+ */
 
 int	print_char(va_list args)
 {
@@ -55,48 +56,47 @@ int	print_char(va_list args)
 }
 
 /**
-  * print_number - a fonction who convert the args in a int
-  * @args: a int/unsigned int we want to convert
-  * Return: the len of what we want to print
-  */
+ * print_number - a fonction who convert the args in a int
+ * @args: a int/unsigned int we want to convert
+ * Return: the len of what we want to print
+ */
 
 int	print_number(va_list args)
 {
-	int num;
-	int r;
+	unsigned int num;
+	int r = 0;
 
 	num = va_arg(args, int);
 	if (num == INT_MIN)
 	{
-		num = -2147483647;
+		num = -2147483648;
 	}
 	if (num == INT_MAX)
 	{
 		num = 2147483647;
 	}
-	r = print_int(num, 0);
+
+	r = print_int(num, r);
 	return (r);
 }
 
 /**
-  * print_int - fonction that print a int/unsigned int
-  * @num: a int/unsigned int we want to print
-  * Return: the len of what we print
-  */
+ * print_int - fonction that print a int/unsigned int
+ * @num: a int/unsigned int we want to print
+ * Return: the len of what we print
+ */
 
 int	print_int(int num, int r)
 {
-
 	if (num < 0)
 	{
-		r += _putchar('-');
+		r = _putchar('-');
 		num = -num;
 	}
-
 	if (num / 10)
 	{
-	 r += print_int(num / 10, r);
+		r = print_int(num / 10, r);
 	}
 	r += _putchar(num % 10 + '0');
-	return (r);
+	return r;
 }
