@@ -16,6 +16,9 @@ int _printf(const char *const format, ...)
 		{0, NULL}};
 	len = 0;
 	va_start(args, format);
+
+	if (format == NULL)
+		return (-1);
 	for (x = 0; format && format[x]; x++)
 	{
 		if (format[x] == '%')
@@ -29,7 +32,8 @@ int _printf(const char *const format, ...)
 					break;
 				}
 			}
-			if (format[x] == '%' && format[x + 1] == '\0')
+			if (format[x - 1] != '%' &&
+				format[x] == '%' && format[x + 1] == '\0')
 				return (-1);
 			if (ops[y].op == '\0')
 				len += print_percent(args);
