@@ -2,11 +2,19 @@
 #include <stdio.h>
 #include "main.h"
 
-/**
- * main - Entry point
- *
- * Return: Always 0
- */
+void check_length(int len, int len2, char *msg)
+{
+    printf("\n");
+    if (len != len2)
+    {
+        printf("%d %d", len, len2);
+        fflush(stdout);
+        printf("-> %s Lengths differ.\n", msg);
+        fflush(stdout);
+        return (1);
+    }
+}
+
 int main(void)
 {
     int len;
@@ -14,7 +22,6 @@ int main(void)
     unsigned int ui;
     void *addr;
 
-    setbuf(stdout, 0);
     len = _printf("Let's try to printf a simple sentence.\n");
     ui = (unsigned int)INT_MAX + 1024;
     addr = (void *)0x7ffe637541f0;
@@ -45,24 +52,41 @@ int main(void)
     _printf("Len:[%d]\n", len);
     printf("Len:[%d]\n", len2);
 
-    _printf("Unknown:[%r]\n");
-    printf("Unknown:[%r]\n");
-    printf("%s", NULL);
+    len = _printf("Unknown:[%r]\n");
+    len2 = printf("Unknown:[%r]\n");
+    check_length(len, len2, "Test du pourcent [%r] \\ n");
 
     len = _printf("Custom pourcent:[%]\n");
     len2 = printf("Custom pourcent:[%]\n");
-    printf("%d %d\n", len, len2);
+    check_length(len, len2, "Test du pourcent [%] \\ n");
+
+    len = _printf("%2\n");
+    len2 = printf("%2\n");
+    check_length(len, len2, "Test du pourcent %2 \\ n");
+
+    len = _printf("% \n");
+    len2 = printf("% \n");
+    check_length(len, len2, "Test du pourcent avec un espace");
+
+    len = _printf("%\n");
+    len2 = printf("%\n");
+    check_length(len, len2, "Test du pourcent avec une new line");
 
     len = _printf("%");
-    printf("Len case %: %d\n", len);
     len2 = printf("%");
-    printf("Len case %: %d\n", len2);
+    check_length(len, len2, "Test du pourcent tout seul");
 
-    len = _printf("% ");
-    printf("Len case %: %d\n", len);
-    len2 = printf("% ");
-    printf("Len case %: %d\n", len2);
- 
+    len = _printf("%c", 'S');
+    len2 = printf("%c", 'S');
+    check_length(len, len2, "Test du char tout seul");
+
+    len = _printf("%%");
+    len2 = printf("%%");
+    check_length(len, len2, "Test double pourcentage sans new line");
+
+    len = _printf(NULL);
+    len2 = printf(NULL);
+    check_length(len, len2, "format est egal a NULL");
+
     return (0);
 }
-
