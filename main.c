@@ -15,7 +15,7 @@ void check_length(int len, int len2, char *msg)
 	}
 }
 
-int main(void)
+/*int main(void)
 {
 	int len;
 	int len2;
@@ -99,5 +99,20 @@ int main(void)
 	len = _printf("%d - %d = %d\n", 1024, 2048, -1024);
 	len2 = printf("%d - %d = %d\n", 1024, 2048, -1024);
 	check_length(len, len2, "Check len when is positive and negative");
+	return (0);
+}*/
+int main(void)
+{
+	int len, len2;
+
+	len = _printf("%d + %d = %d\n", INT_MIN, INT_MAX, (INT_MIN + INT_MAX));
+	len2 = printf("%d + %d = %d\n", INT_MIN, INT_MAX, (INT_MIN + INT_MAX));
+	fflush(stdout);
+	if (len != len2)
+	{
+		printf("Lengths differ.\n");
+		fflush(stdout);
+		return (1);
+	}
 	return (0);
 }

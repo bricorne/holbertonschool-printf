@@ -63,40 +63,38 @@ int	print_char(va_list args)
 
 int	print_number(va_list args)
 {
-	int num;
 	int r = 0;
+	unsigned int z;
+	int num = va_arg(args, int);
 
-	num = va_arg(args, unsigned int);
-	if (num == INT_MIN)
+	if (num < 0)
 	{
-	num = num;
+		r += _putchar('-');
+		z = -num;
 	}
-	r = print_int(num, r);
+	else
+	{
+		z = num;
+	}
+
+	r += print_int(z);
 	return (r);
 }
 
 /**
  * print_int - fonction that print a int/unsigned int
- * @num: a int/unsigned int we want to print
- * @r: count intger
+ * @z: a int/unsigned int we want to print
  * Return: the len of what we print
  */
 
-int	print_int(int num, int r)
+int	print_int(unsigned int z)
 {
-	if (num < 0 && num != INT_MIN)
+	int r = 0;
+
+	if (z / 10)
 	{
-		r = _putchar('-');
-		num = -num;
+		r += print_int(z / 10);
 	}
-	else
-	{
-		num = num;
-	}
-	if (num / 10)
-	{
-		r = print_int((num / 10), r);
-	}
-	r += _putchar((num % 10) + '0');
+	r += _putchar((z % 10) + '0');
 	return (r);
 }
