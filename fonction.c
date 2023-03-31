@@ -2,83 +2,84 @@
 #include "main.h"
 #include <stdlib.h>
 #include <unistd.h>
-char *_strcpy(char *dest, char *src);
-char *_strdup(char *str);
-int _putchar(char c);
-int _strlen(const char *s);
-int print_string(const char *str);
-/**
- * *_strcpy - check holberton
- * @dest: have strings
- * @src:have strings
- * Return:void
+#include <stdarg.h>
+
+/*
+ * print_percent - a function that help to print a percent
+ * @args: va_arg, supposed to be a chart
+ * return: bytes of writen characters
  */
-char *_strcpy(char *dest, char *src)
+int	print_percent(va_list args)
 {
-	int i;
-
-	for (i = 0; src[i] != '\0'; ++i)
-	{
-	dest[i] = src[i];
-	}
-	dest[i] = '\0';
-	return (dest);
+	(void) args;
+	return (_putchar('%'));
 }
-int _strlen(const char *s)
-{
-	int i = 0;
 
-	while(s[i])
-	{
-		i++;
-	}
-	return (i);
-}
-/**
- * _strdup - functiion
- * @str: input
- * Return: array
+/*
+ * _strlen - a fonction that calcul the length of a string
+ * @s: a string to print
+ * return the length of a string
  */
-char *_strdup(char *str)
+int	_strlen(const char *s)
 {
-	unsigned int i;
-	char *array;
+	int	x;
 
-	if (str == 0)
-	{
-		return (0);
-	}
-	for (i = 0; str[i]; i++)
+	for (x = 0; s[x]; x++)
 		;
-
-	array = malloc((i + 1) * sizeof(char));
-	if (array == NULL)
-	{
-		return (NULL);
-	}
-	for (i = 0; str[i] ; i++)
-	array[i] = str[i];
-	array[i] = '\0';
-	return (array);
+	return (x);
 }
-int _putchar(char c)
+
+/*
+ * _putchar - fonction that write a char
+ * @c: a char to print
+ * return: the char
+ */
+
+int	_putchar(char c)
 {
-        return (write(1, &c, 1));
+	return (write(1, &c, 1));
 }
-int print_string(const char *str)
+
+/*
+ * print_string - fonction that print a string
+ * @args - argument to print
+ *
+ */
+
+int	print_string(va_list args)
 {
-        int i;
+	int	r;
+	int	x;
+	char	*s;
 
-        for (i = 0;str[i]; i++)
-        {
-                _putchar(str[i]);
-        }
-
-return (i);
+	r = 0;
+	s = va_arg(args, char *);
+	if (s == NULL)
+		s ="(null)";
+	for (x = 0; s[x]; x++)
+		r += _putchar(s[x]);
+	return (r);
 }
-int print_char(char c)
+
+/*
+ * print_char - fonction that print a char
+ * @c: a char to print
+ * return: the length (1)
+ */
+
+int	print_char(va_list args)
 {
-	_putchar(c);
+	int	r;
+	char	v;
 
-	return(1);
+	v = va_arg(args, int);
+	r = _putchar((char) v);
+	return (r);
 }
+
+/*
+ *
+ *
+ *
+ */
+
