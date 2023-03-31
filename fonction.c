@@ -65,7 +65,7 @@ int	print_number(va_list args)
 	int r;
 
 	num = va_arg(args, int);
-	r = print_int(num);
+	r = print_int(num, 0);
 	return (r);
 }
 
@@ -75,20 +75,20 @@ int	print_number(va_list args)
   * Return: the len of what we print
   */
 
-int	print_int(int num)
+int	print_int(int num, int r)
 {
-	int r;
-
-	r = 0;
 
 	if (num < 0)
 	{
-		r = _putchar('-');
+		r++;
+		_putchar('-');
 		num = -num;
 	}
 
 	if (num / 10)
-		print_int(num / 10);
+	{
+	 r += print_int(num / 10, r);
+	}
 	r += _putchar(num % 10 + '0');
 	return (r);
 }
