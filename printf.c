@@ -2,6 +2,7 @@
 #include <stdarg.h>
 #include <stdio.h>
 #include <ctype.h>
+#include <unistd.h>
 
 /**
   * _putchar - fonction that write a char
