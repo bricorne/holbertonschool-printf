@@ -4,6 +4,17 @@
 #include <ctype.h>
 
 /**
+  * _putchar - fonction that write a char
+  * @c: a char to print
+  * Return: the char
+  */
+
+int	_putchar(char c)
+{
+	return (write(1, &c, 1));
+}
+
+/**
   * _printf - fonction that print anythings
   * @format: the format of the thing to print
   * ... - all the arguments to print
@@ -18,10 +29,11 @@ int _printf(const char *const format, ...)
 		{'s', print_string},
 		{'c', print_char},
 		{'%', print_percent},
+		{'i', print_number},
+		{'d', print_number},
 		{0, NULL}};
 	len = 0;
 	va_start(args, format);
-
 	if (format == NULL)
 		return (-1);
 	for (x = 0; format && format[x]; x++)

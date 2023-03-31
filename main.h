@@ -13,6 +13,7 @@ int print_string(va_list args);
 int print_char(va_list args);
 int print_percent(va_list args);
 int _putchar(char c);
-int _strlen(const char *s);
+int print_number(va_list args);
+int print_int(int num);
 
 #endif

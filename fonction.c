@@ -17,17 +17,6 @@ int	print_percent(va_list args)
 }
 
 /**
-  * _putchar - fonction that write a char
-  * @c: a char to print
-  * Return: the char
-  */
-
-int	_putchar(char c)
-{
-	return (write(1, &c, 1));
-}
-
-/**
   * print_string - fonction that print a string
   * @args: argument to print
   * Return: the len of the string
@@ -64,3 +53,42 @@ int	print_char(va_list args)
 	return (r);
 }
 
+/**
+  * print_number - a fonction who convert the args in a int
+  * @args: a int/unsigned int we want to convert
+  * Return: the len of what we want to print
+  */
+
+int	print_number(va_list args)
+{
+	int num;
+	int r;
+
+	num = va_arg(args, int);
+	r = print_int(num);
+	return (r);
+}
+
+/**
+  * print_int - fonction that print a int/unsigned int
+  * @num: a int/unsigned int we want to print
+  * Return: the len of what we print
+  */
+
+int	print_int(int num)
+{
+	int r;
+
+	r = 0;
+
+	if (num < 0)
+	{
+		r = _putchar('-');
+		num = -num;
+	}
+
+	if (num / 10)
+		print_int(num / 10);
+	r += _putchar(num % 10 + '0');
+	return (r);
+}
