@@ -4,47 +4,34 @@
 #include <unistd.h>
 #include <stdarg.h>
 
-/*
- * print_percent - a function that help to print a percent
- * @args: va_arg, supposed to be a chart
- * return: bytes of writen characters
- */
+/**
+  * print_percent - a function that help to print a percent
+  * @args: va_arg, supposed to be a chart
+  * Return: bytes of writen characters
+  */
+
 int	print_percent(va_list args)
 {
 	(void) args;
 	return (_putchar('%'));
 }
 
-/*
- * _strlen - a fonction that calcul the length of a string
- * @s: a string to print
- * return the length of a string
- */
-int	_strlen(const char *s)
-{
-	int	x;
-
-	for (x = 0; s[x]; x++)
-		;
-	return (x);
-}
-
-/*
- * _putchar - fonction that write a char
- * @c: a char to print
- * return: the char
- */
+/**
+  * _putchar - fonction that write a char
+  * @c: a char to print
+  * Return: the char
+  */
 
 int	_putchar(char c)
 {
 	return (write(1, &c, 1));
 }
 
-/*
- * print_string - fonction that print a string
- * @args - argument to print
- *
- */
+/**
+  * print_string - fonction that print a string
+  * @args: argument to print
+  * Return: the len of the string
+  */
 
 int	print_string(va_list args)
 {
@@ -55,17 +42,17 @@ int	print_string(va_list args)
 	r = 0;
 	s = va_arg(args, char *);
 	if (s == NULL)
-		s ="(null)";
+		s = "(null)";
 	for (x = 0; s[x]; x++)
 		r += _putchar(s[x]);
 	return (r);
 }
 
-/*
- * print_char - fonction that print a char
- * @c: a char to print
- * return: the length (1)
- */
+/**
+  * print_char - fonction that print a char
+  * @args: a char to print
+  * Return: the length (1)
+  */
 
 int	print_char(va_list args)
 {
@@ -76,10 +63,4 @@ int	print_char(va_list args)
 	r = _putchar((char) v);
 	return (r);
 }
-
-/*
- *
- *
- *
- */
 

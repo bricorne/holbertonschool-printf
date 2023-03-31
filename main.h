@@ -4,9 +4,8 @@
 
 typedef struct o
 {
-    char op;
-    int (*func)(va_list);
-
+	char op;
+	int (*func)(va_list);
 } operateurs;
 
 int _printf(const char *format, ...);

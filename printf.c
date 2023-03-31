@@ -5,9 +5,7 @@
 
 int _printf(const char *const format, ...)
 {
-	int len;
-	int x;
-	int y;
+	int len, x, y;
 	va_list args;
 	operateurs ops[] = {
 		{'s', print_string},
