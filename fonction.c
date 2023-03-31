@@ -63,11 +63,14 @@ int	print_char(va_list args)
 
 int	print_number(va_list args)
 {
-	unsigned int num;
+	int num;
 	int r = 0;
 
 	num = va_arg(args, int);
-
+if (num == INT_MIN)
+{
+	num = -2147483648;
+}
 	r = print_int(num, r);
 	return (r);
 }
