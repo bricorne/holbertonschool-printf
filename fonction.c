@@ -66,11 +66,11 @@ int	print_number(va_list args)
 	int num;
 	int r = 0;
 
-	num = va_arg(args, int);
-if (num == INT_MIN)
-{
-	num = -2147483648;
-}
+	num = va_arg(args, unsigned int);
+	if (num == INT_MIN)
+	{
+	num = num;
+	}
 	r = print_int(num, r);
 	return (r);
 }
@@ -78,20 +78,25 @@ if (num == INT_MIN)
 /**
  * print_int - fonction that print a int/unsigned int
  * @num: a int/unsigned int we want to print
+ * @r: count intger
  * Return: the len of what we print
  */
 
 int	print_int(int num, int r)
 {
-	if (num < 0)
+	if (num < 0 && num != INT_MIN)
 	{
 		r = _putchar('-');
 		num = -num;
 	}
+	else
+	{
+		num = num;
+	}
 	if (num / 10)
 	{
-		r = print_int(num / 10, r);
+		r = print_int((num / 10), r);
 	}
-	r += _putchar(num % 10 + '0');
-	return r;
+	r += _putchar((num % 10) + '0');
+	return (r);
 }
