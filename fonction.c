@@ -67,14 +67,6 @@ int	print_number(va_list args)
 	int r = 0;
 
 	num = va_arg(args, int);
-	if (num == INT_MIN)
-	{
-		num = -2147483648;
-	}
-	if (num == INT_MAX)
-	{
-		num = 2147483647;
-	}
 
 	r = print_int(num, r);
 	return (r);
