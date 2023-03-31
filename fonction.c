@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <stdarg.h>
+#include <limits.h>
 
 /**
   * print_percent - a function that help to print a percent
