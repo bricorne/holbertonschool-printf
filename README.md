@@ -20,3 +20,7 @@ To use the _printf function, just include the main.h file and call it in your pr
 
 ![image](https://user-images.githubusercontent.com/49965538/229373354-b56c80f1-b245-4fbc-834f-379b187fd410.png)
 
+<h3>Authors</h3>
+
+Shawan and Brice
+
