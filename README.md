@@ -1,20 +1,20 @@
-Bienvenue dans le README de ce projet !
+Welcome to the README of this project!
 
-Ce projet consiste à recréer la fonction printf en langage C.
+This project consists in recreating the printf function in C language.
 
-Fonctionnalités :
+Features:
 
-La fonction printf permet d'afficher du texte sur la sortie standard, en y incluant des variables. Dans ce projet, nous avons recréé une version de la fonction printf qui ne prend en compte que les spécificateurs de conversion suivants :
+The printf function prints text to standard output, including variables. In this project, we have recreated a version of the printf function that only takes into account the following conversion specifiers:
 
-%d et %i : affiche un nombre entier (positif ou négatif)
+%d and %i: displays an integer (positive or negative)
 
-%c : affiche un caractère
+%c: displays a character
 
-%s : affiche une chaîne de caractères
+%s: displays a character string
 
-Utilisation :
+Use :
 
-Pour utiliser la fonction _printf, il suffit d'inclure le fichier main.h et de l'appeler dans votre programme. Le fichier main.h fait appel à toutes les fonctions nécessaires au bon fonctionnement du programme.
+To use the _printf function, just include the main.h file and call it in your program. The main.h file calls all the functions necessary for the proper functioning of the program.
 
 Flowchart :
 
